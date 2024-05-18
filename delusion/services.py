@@ -28,7 +28,7 @@ class WebSocketClient:
         if response.status_code == 200:
             cookie = response.headers.get('Set-Cookie')
             cookie = cookie.split(';')
-            cookie = cookie[0] + ';' + cookie[3].split(',')[1]
+            cookie = cookie[0] + ';' + cookie[4].split(',')[1]
             return cookie
         else:
             print('Login request failed')
