@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   postgres:
     image: postgres:14
@@ -70,8 +71,6 @@ services:
     depends_on:
       - redis
 
-
-
   # pgadmin:
   #   container_name: pgadmin4_container
   #   image: dpage/pgadmin4
@@ -81,5 +80,3 @@ services:
   #     PGADMIN_DEFAULT_PASSWORD: root
   #   ports:
   #     - "5050:80"
-
-  
