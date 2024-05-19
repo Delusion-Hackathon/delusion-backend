@@ -30,6 +30,7 @@ ipython==8.13.0
 mkdocs==1.4.3
 flake8==6.0.0
 drf-spectacular
+Faker
 
 # Testing
 mock==5.0.2

@@ -19,4 +19,5 @@ urlpatterns = [
 
     path("nodes/", views.NodeListCreateView.as_view(), name="node-list-create"),
     path("nodes/<int:pk>/", views.NodeRetrieveUpdateDestroyView.as_view(), name="node-retrieve-update-destroy"),
+    path("nodes/node_id/<str:node_id>/", views.NodeRetrieveWithNodeIDView.as_view(), name="node-retrieve-with-node-id"),
 ]
