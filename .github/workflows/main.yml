@@ -22,4 +22,5 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
       run: |
+        echo "Deploying to $USERNAME"
         sshpass -p $PASSWORD ssh $USERNAME@$SERVER_ADDRESS "echo 'Connected successfully!'"
