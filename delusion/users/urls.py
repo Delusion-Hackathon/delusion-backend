@@ -15,7 +15,8 @@ urlpatterns = [
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('register/', views.UserCreateViewSet.as_view({'post': 'create'}), name="user-create"),
 
-    path('company-register/', views.CompanyRegistrationViewSet.as_view({'post': 'create'}), name="company-register"),
-    path('countries/', views.CountryViewSet.as_view({'get': 'list'}), name="countries"),
     path("me/", views.UserMeViewSet.as_view({'get': 'retrieve', 'patch': 'partial_update'}), name="user-me"),
+
+    path("nodes/", views.NodeListCreateView.as_view(), name="node-list-create"),
+    path("nodes/<int:pk>/", views.NodeRetrieveUpdateDestroyView.as_view(), name="node-retrieve-update-destroy"),
 ]

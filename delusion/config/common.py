@@ -26,18 +26,16 @@ class Common(Configuration):
 
 
         # Third party apps
-        'rest_framework',            # utilities for rest apis
-        'django_filters',            # for filtering rest endpoints
-        'drf_yasg',                  # for api documentation
-        'corsheaders',               # for cross origin requests
+        'rest_framework',
+        'django_filters',
+        'corsheaders',
 
         # Your apps
         'delusion.users',
-        'delusion.company.apps.CompanyConfig',
-        'delusion.node.apps.NodeConfig',
 
         #JWTToken
         'rest_framework_simplejwt',
+        "drf_spectacular",
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -216,6 +214,7 @@ class Common(Configuration):
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
         'PAGE_SIZE': int(os.getenv('DJANGO_PAGINATION_LIMIT', 10)),
         'DATETIME_FORMAT': '%Y-%m-%dT%H:%M:%S%z',
+        'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
         'DEFAULT_RENDERER_CLASSES': (
             'rest_framework.renderers.JSONRenderer',
             'rest_framework.renderers.BrowsableAPIRenderer',
@@ -227,6 +226,13 @@ class Common(Configuration):
             'rest_framework.authentication.BasicAuthentication',
             'rest_framework_simplejwt.authentication.JWTAuthentication',
         )
+    }
+
+    SPECTACULAR_SETTINGS = {
+        'TITLE': 'Deluson',
+        'DESCRIPTION': 'Deslusion description',
+        'VERSION': '1.0.0',
+        'SERVE_INCLUDE_SCHEMA': False,
     }
     
     from datetime import timedelta

@@ -10,10 +10,6 @@ services:
     restart: always
     environment:
       - DJANGO_SECRET_KEY=local
-      - MESH_URL=https://157.230.96.110
-      - WEBSOCKET_URL=wss://157.230.96.110/control.ashx
-      - MESH_USERNAME=admin
-      - MESH_PASSWORD=admin123.
       - DJANGO_SECRET_KEY=ez=gtk3q1_qtzta64&ejc7@!@l+y@n+8%(tq=xi+x@ccipoa^@
       - DB_HOST=postgres
       - DB_PORT=5432
@@ -42,13 +38,9 @@ services:
     image: redis:alpine
   celery-beat:
     build: ./
-    command: celery -A reNativo beat --loglevel=info
+    command: celery -A delusion beat --loglevel=info
     environment:
       - DJANGO_SECRET_KEY=local
-      - MESH_URL=https://157.230.96.110
-      - WEBSOCKET_URL=wss://157.230.96.110/control.ashx
-      - MESH_USERNAME=admin
-      - MESH_PASSWORD=admin123.
       - DJANGO_SECRET_KEY=ez=gtk3q1_qtzta64&ejc7@!@l+y@n+8%(tq=xi+x@ccipoa^@
       - DB_HOST=postgres
       - DB_PORT=5432
@@ -63,13 +55,9 @@ services:
     
   celery:
     build: ./
-    command: celery -A reNativo worker -l info
+    command: celery -A delusion worker -l info
     environment:
       - DJANGO_SECRET_KEY=local
-      - MESH_URL=https://157.230.96.110
-      - WEBSOCKET_URL=wss://157.230.96.110/control.ashx
-      - MESH_USERNAME=admin
-      - MESH_PASSWORD=admin123.
       - DJANGO_SECRET_KEY=ez=gtk3q1_qtzta64&ejc7@!@l+y@n+8%(tq=xi+x@ccipoa^@
       - DB_HOST=postgres
       - DB_PORT=5432

@@ -1,13 +1,18 @@
 from rest_framework import serializers
-from delusion.users.models import CompanyRegistration, Country, User
+from delusion.users.models import User, Node
 
 
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name',)
-        read_only_fields = ('username', )
+        fields = (
+            "id",
+            "username",
+            "first_name",
+            "last_name",
+        )
+        read_only_fields = ("username",)
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
@@ -20,29 +25,28 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'first_name', 'last_name', 'email')
-        extra_kwargs = {'password': {'write_only': True}, 'email': {"required": True}}
-
-
-class CountrySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Country
-        fields = "__all__"
-
-
-class RegistrationSerializer(serializers.ModelSerializer):
-
-    approved = serializers.ReadOnlyField()
-
-    class Meta:
-        model = CompanyRegistration
-        fields = "__all__"
+        fields = ("id", "username", "password", "first_name", "last_name", "email")
+        extra_kwargs = {"password": {"write_only": True}, "email": {"required": True}}
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'msp_name', 'profile_picture',)
-        extra_kwargs = {'username': {"required": False}}
+        fields = (
+            "id",
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "profile_picture",
+        )
+        extra_kwargs = {"username": {"required": False}}
+
+
+class NodeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Node
+        fields = "__all__"
+        read_only_fields = ("created_at", "updated_at")
